@@ -1,0 +1,180 @@
+<!-- 
+    Please note that these html and css files were created using browser extension: markdown viewer by simov.github.io
+    Sources tab of Developer tools was used to copy converted code to create this webpage.
+ -->
+
+<html>
+  <head>
+    <meta name="color-scheme" content="light dark" />
+    <title>Getting Started</title>
+    <!-- <link
+      rel="icon"
+      href="chrome-extension://cgfmehpekedojlmjepoimbfcafopimdg/icons/dark/16x16.png"
+    /> -->
+  </head>
+  <body class="_theme-github-dark">
+    <link rel="stylesheet" type="text/css" href="style.css" id="_theme" />
+    <link rel="stylesheet" type="text/css" href="prism.css" id="_prism" />
+    <div id="_html" class="markdown-body">
+      <h1 id="installing-prerequisites">
+        <a
+          class="anchor"
+          name="installing-prerequisites"
+          href="#installing-prerequisites"
+        >
+          <span class="octicon octicon-link"></span> </a
+        >Installing Prerequisites
+      </h1>
+      <h2 id="required-files">
+        <a class="anchor" name="required-files" href="#required-files"
+          ><span class="octicon octicon-link"></span></a
+        >Required Files
+      </h2>
+      <p>
+        <a href="https://nodejs.org/en" target="_blank">NodeJS</a><br /><a
+          href="https://code.visualstudio.com"
+          target="_blank"
+          >VS Code</a
+        ><br />TypeScript
+      </p>
+      <h3 id="procedure-for-windows">
+        <a
+          class="anchor"
+          name="procedure-for-windows"
+          href="#procedure-for-windows"
+          ><span class="octicon octicon-link"></span></a
+        >Procedure for Windows
+      </h3>
+      <ol>
+        <li>
+          <p>
+            Install NodeJS LTS Version from
+            <a href="https://nodejs.org/en">https://nodejs.org/en</a> with
+            default settings
+          </p>
+        </li>
+        <li>
+          <p>
+            Install VS Code from
+            <a href="https://code.visualstudio.com"
+              >https://code.visualstudio.com</a
+            >
+          </p>
+        </li>
+        <li><p>Open Powershell / Command Prompt</p></li>
+        <li>
+          <p>
+            run command below to check if node is installed correctly on your
+            system:
+          </p>
+          <pre><code>node -v
+</code></pre>
+        </li>
+        <li>
+          <p>Output will look something like:</p>
+          <pre><code>v18.7.0
+</code></pre>
+          <p>
+            If you are running node or any script on PowerShell for the first
+            time, you might encounter this error
+          </p>
+          <pre><code>ps1 cannot be loaded because running scripts is disabled on this system.
+</code></pre>
+          <p>
+            To solve this error, open PowerShell as administrator and run this
+            command:
+          </p>
+          <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+</code></pre>
+        </li>
+        <li>
+          <p>
+            If everything is all set, let's install TypeScript. Open PowerShell
+            / Command Prompt and run:
+          </p>
+          <pre><code>npm install -g typescript
+</code></pre>
+        </li>
+      </ol>
+      <h2 id="initializing-a-project">
+        <a
+          class="anchor"
+          name="initializing-a-project"
+          href="#initializing-a-project"
+          ><span class="octicon octicon-link"></span></a
+        >Initializing a Project
+      </h2>
+      <ol>
+        <li>
+          <p>Create a folder in which you will create your typescript file.</p>
+        </li>
+        <li><p>Open that folder in Windows Explorer.</p></li>
+        <li>
+          <p>
+            On the Navigation Panel, click on File and then click on open in
+            PowerShell / Command Prompt. This will open the current folder in
+            your selected terminal.
+          </p>
+        </li>
+        <li>
+          <p>type</p>
+          <pre><code>npm init -y
+</code></pre>
+          <p>to create a package.json file. Then type</p>
+          <pre><code>tsc --init
+</code></pre>
+          <p>to config the project with TypeScript.</p>
+        </li>
+        <li>
+          <p>
+            Then open that folder in VS Code manually or by right-clicking in
+            the folder and select the option "Open with Code".
+          </p>
+        </li>
+        <li>
+          <p>
+            Create a file: index.ts, you can replace index with any filename you
+            want but the extension must be '.ts'
+          </p>
+        </li>
+        <li>
+          <p>
+            Type statements in index.ts file, if you already know TypeScript or
+            just type:
+          </p>
+          <pre
+            class="language-javascript"
+            tabindex="0"
+          ><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+          <p>
+            This statement is used to display anything in console. You don't
+            need to know anything more about this right now.
+          </p>
+        </li>
+        <li>
+          <p>
+            Now, to run 'index.ts' file in console. We first need to convert it
+            into JavaScript script as TypeScript cannot run directly on console.
+            To do this, write in terminal:
+          </p>
+          <pre><code>tsc index.ts
+</code></pre>
+          <p>This command will generate index.js file in the same folder.</p>
+        </li>
+        <li>
+          <p>Run the index.js file by running</p>
+          <pre><code>node index.js
+</code></pre>
+        </li>
+        <li>
+          <p>
+            And boom!! You succeeded in writing your first TypeScript program.
+            Every time you want to initialize a TypeScript project, you need to
+            repeat these steps.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>
