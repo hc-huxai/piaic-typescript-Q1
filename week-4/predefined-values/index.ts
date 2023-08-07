@@ -291,3 +291,152 @@ const getAgeCategory = (age: number) => {
 };
 
 console.log(`${getAgeCategory(age)}`);
+
+console.log();
+console.log();
+
+// Exercise 12
+console.log(`==================`);
+console.log(`Exercise 12: Check Temperature & Suggest Clothes`);
+console.log(`==================`);
+
+console.log();
+
+let temperature: number = 21;
+
+const suggestClothes = (temperature: number) => {
+  if (temperature > 20) {
+    console.log("The weather is hot.");
+    console.log("It is advisable to wear t-shirts and shorts.");
+  } else {
+    console.log("The weather is cold");
+    console.log("It is advisable to wear a sweater, jeans or pants.");
+  }
+};
+
+suggestClothes(temperature);
+
+console.log();
+console.log();
+
+// Exercise 13
+console.log(`==================`);
+console.log(
+  `Exercise 13: Check if Number is divisible by 3 or 5 or both or not divisible`
+);
+console.log(`==================`);
+
+console.log();
+
+let numToDivide: number = 2457;
+
+const checkDivisibility = (number: number) => {
+  if (number != 0) {
+    let divisibleBy3 = number % 3 == 0;
+    let divisibleBy5 = number % 5 == 0;
+
+    if (divisibleBy3 && divisibleBy5) {
+      return "Number is divisible by 3 and 5";
+    } else if (divisibleBy3) {
+      return "Number is only divisible by 3";
+    } else if (divisibleBy5) {
+      return "Number is only divisible by 5";
+    } else {
+      return `${number} is neither divisible by 3 nor 5`;
+    }
+  }
+};
+
+console.log(checkDivisibility(numToDivide));
+
+console.log();
+console.log();
+
+// Exercise 14
+console.log(`==================`);
+console.log(`Exercise 14: Check if its a Leap Year or not`);
+console.log(`==================`);
+
+console.log();
+
+let year = 2002;
+
+const checkLeapYear = (year: number) => {
+  if (year % 4 == 0 && !(year % 100 == 0)) {
+    console.log(`${year} is leap year.`);
+  } else {
+    console.log(`${year} is not leap year.`);
+  }
+};
+
+checkLeapYear(year);
+
+console.log();
+console.log();
+
+// Exercise 15
+console.log(`==================`);
+console.log(`Exercise 15: Determine the Day of the Week`);
+console.log(`==================`);
+
+console.log();
+
+let numberOfDay = 5;
+
+const printDayName = (numberOfDay: number) => {
+  if (numberOfDay >= 1 && numberOfDay <= 7) {
+    if (numberOfDay == 1) {
+      console.log(`Number of Day: ${numberOfDay} | Day: Monday`);
+    } else if (numberOfDay == 2) {
+      console.log(`Number of Day: ${numberOfDay} | Day: Tuesday`);
+    } else if (numberOfDay == 3) {
+      console.log(`Number of Day: ${numberOfDay} | Day: Wednesday`);
+    } else if (numberOfDay == 4) {
+      console.log(`Number of Day: ${numberOfDay} | Day: Thursday`);
+    } else if (numberOfDay == 5) {
+      console.log(`Number of Day: ${numberOfDay} | Day: Friday`);
+    } else if (numberOfDay == 6) {
+      console.log(`Number of Day: ${numberOfDay} | Day: Saturday`);
+    } else {
+      console.log(`Number of Day: ${numberOfDay} | Day: Sunday`);
+    }
+  } else {
+    console.log("Please Enter Valid Day Number");
+  }
+};
+
+printDayName(numberOfDay);
+
+console.log();
+console.log();
+
+// Exercise 16
+console.log(`==================`);
+console.log(`Exercise 16: Calculate Tax based on Consumed Electricity`);
+console.log(`==================`);
+
+console.log();
+
+let unitsConsumed: number = 702;
+let taxRate: number;
+let unitRate = 28;
+
+const calcAmountWithTax = (units: number) => {
+  let amount = unitRate * units;
+  if (units > 100) {
+    taxRate = 10;
+  } else if (units > 200) {
+    taxRate = 15;
+  } else if (units > 300) {
+    taxRate = 20;
+  } else if (units > 400) {
+    taxRate = 22.4;
+  } else if (units > 500) {
+    taxRate = 25;
+  }
+  return `Electricity Cost: ${amount} + ${taxRate}% Tax = ${
+    amount + amount * (taxRate / 100)
+  }`;
+};
+
+console.log(calcAmountWithTax(unitsConsumed));
