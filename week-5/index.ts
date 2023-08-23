@@ -106,4 +106,8 @@ while (!exitProgram) {
 }
 
 console.log(`Exit`);
+<<<<<<< HEAD
 process.exit(0);
+=======
+process.exit(0);
+>>>>>>> 818e11abc28d2f48519699b62610aad22eb492d7
