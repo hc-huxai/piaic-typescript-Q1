@@ -5,50 +5,30 @@ import {
   Exercise04,
   Exercise05,
   Exercise06,
-  Exercise07,
-  Exercise08,
-  Exercise09,
-  Exercise10,
 } from "./exercises/index";
-import { Spacer } from "../EOA-Functions";
-
-const getInput = require("prompt-sync")({ sigint: true });
+import { Spacer, getInput } from "../EOA-Functions";
 
 let exercises: Array<{ name: string; exerciseFn: () => void }> = [
-  { name: "To-Do List | Array Splice Method", exerciseFn: () => Exercise01() },
   {
-    name: "Print Arithmetic Table using While Loop",
+    name: "Calculate the sum of first n numbers using for loop",
+    exerciseFn: () => Exercise01(),
+  },
+  {
+    name: "Iterate thru an array & only print even numbers",
     exerciseFn: () => Exercise02(),
   },
   {
-    name: "Add a value at specified index in the given array.",
-    exerciseFn: () =>
-      Exercise03(["Hello", "Everyone", "Name", "is", "Hamza"], 2, "My"),
+    name: "Iterate thru an array & remove even numbers from it",
+    exerciseFn: () => Exercise03([22, 44, -55, -88, 11, 2, -5, -8, 200]),
   },
-  { name: "Functioning Shopping Cart", exerciseFn: () => Exercise04() },
+  { name: "Calculate Area of Circle", exerciseFn: () => Exercise04() },
   {
-    name: "Print first 25 Integers using 'while loop'.",
-    exerciseFn: () => Exercise05(),
-  },
-  {
-    name: "Print first 10 even numbers using 'while loop'.",
-    exerciseFn: () => Exercise06(),
+    name: "Iterate thru a list of grades & remove if below 50",
+    exerciseFn: () => Exercise05([24, 57, 62, 49, 91]),
   },
   {
-    name: "Calculate Factorial",
-    exerciseFn: () => Exercise07(),
-  },
-  {
-    name: "Remove Number from Array if Negative",
-    exerciseFn: () => Exercise08(),
-  },
-  {
-    name: "Find Sum of Numbers Stored in Array",
-    exerciseFn: () => Exercise09(),
-  },
-  {
-    name: "Convert List of °C Temperatures to °F",
-    exerciseFn: () => Exercise10(),
+    name: "Print the largest number in array",
+    exerciseFn: () => Exercise06([24, 57, 62, 49, 91]),
   },
 ];
 

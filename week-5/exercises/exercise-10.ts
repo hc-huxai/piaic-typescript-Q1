@@ -7,18 +7,26 @@ const Exercise10 = () => {
 
   let fahrenheit = [];
 
-  for (let i = 0; i < celsius.length; i++) {
+  var i = 0;
+  while (i < celsius.length) {
     if (isNaN(Number(celsius[i]))) {
       console.log(`${celsius[i]} is not a temperature`);
-    } else celsius[i] = Number(celsius[i]);
+    } else {
+      celsius[i] = Number(celsius[i]);
+      i++;
+    }
   }
 
-  for (let i = 0; i < celsius.length; i++) {
+  var i = 0;
+  while (i < celsius.length) {
     fahrenheit.push(((9 / 5) * celsius[i] + 32).toFixed(2));
+    i++;
   }
 
-  for (let i = 0; i < fahrenheit.length; i++) {
+  var i = 0;
+  while (i < fahrenheit.length) {
     fahrenheit[i] = Number(fahrenheit[i]);
+    i++;
   }
 
   console.log(`Temperatures in °C => `, celsius);

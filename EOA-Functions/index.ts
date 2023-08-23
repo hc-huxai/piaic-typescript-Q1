@@ -1,3 +1,4 @@
 import Spacer from "./spacer";
+import getInput from "./getInput";
 
-export { Spacer };
+export { Spacer, getInput };
