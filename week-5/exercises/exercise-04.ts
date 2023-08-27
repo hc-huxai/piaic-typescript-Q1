@@ -115,8 +115,8 @@ const Exercise04 = () => {
   };
 
   // Clear
-  const clearCart = (array: Array<{ name: string; quantity: number }>) => {
-    array = [];
+  const clearCart = () => {
+    cartItems = [];
     console.log(`All items are removed from cart.`);
   };
 
@@ -154,7 +154,7 @@ const Exercise04 = () => {
       }
       case "c": {
         // clear all items from the cart
-        clearCart(cartItems);
+        clearCart();
 
         Spacer();
         getAction();

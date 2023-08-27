@@ -1,6 +1,6 @@
-var $eyxLw$process = require("process");
-var $eyxLw$buffer = require("buffer");
-var $eyxLw$fs = require("fs");
+var $9kqO2$process = require("process");
+var $9kqO2$buffer = require("buffer");
+var $9kqO2$fs = require("fs");
 
 var $parcel$global =
 typeof globalThis !== 'undefined'
@@ -43,7 +43,7 @@ if (parcelRequire == null) {
 parcelRequire.register("iadAQ", function(module, exports) {
 
 
-var $d393b47c74009737$require$Buffer = $eyxLw$buffer.Buffer;
+var $d393b47c74009737$require$Buffer = $9kqO2$buffer.Buffer;
 "use strict";
 
 
@@ -102,17 +102,17 @@ function $d393b47c74009737$var$create(config) {
         var echo = opts.echo;
         var masked = "echo" in opts;
         autocomplete = opts.autocomplete || autocomplete;
-        var fd = $eyxLw$process.platform === "win32" ? $eyxLw$process.stdin.fd : $eyxLw$fs.openSync("/dev/tty", "rs");
-        var wasRaw = $eyxLw$process.stdin.isRaw;
-        if (!wasRaw) $eyxLw$process.stdin.setRawMode && $eyxLw$process.stdin.setRawMode(true);
+        var fd = $9kqO2$process.platform === "win32" ? $9kqO2$process.stdin.fd : $9kqO2$fs.openSync("/dev/tty", "rs");
+        var wasRaw = $9kqO2$process.stdin.isRaw;
+        if (!wasRaw) $9kqO2$process.stdin.setRawMode && $9kqO2$process.stdin.setRawMode(true);
         var buf = $d393b47c74009737$require$Buffer.alloc(3);
         var str = "", character, read;
         savedstr = "";
-        if (ask) $eyxLw$process.stdout.write(ask);
+        if (ask) $9kqO2$process.stdout.write(ask);
         var cycle = 0;
         var prevComplete;
         while(true){
-            read = $eyxLw$fs.readSync(fd, buf, 0, 3);
+            read = $9kqO2$fs.readSync(fd, buf, 0, 3);
             if (read > 1) {
                 switch(buf.toString()){
                     case "\x1b[A":
@@ -125,7 +125,7 @@ function $d393b47c74009737$var$create(config) {
                         }
                         str = history.prev();
                         insert = str.length;
-                        $eyxLw$process.stdout.write("\x1b[2K\x1b[0G" + ask + str);
+                        $9kqO2$process.stdout.write("\x1b[2K\x1b[0G" + ask + str);
                         break;
                     case "\x1b[B":
                         if (masked) break;
@@ -139,18 +139,18 @@ function $d393b47c74009737$var$create(config) {
                             str = history.next();
                             insert = str.length;
                         }
-                        $eyxLw$process.stdout.write("\x1b[2K\x1b[0G" + ask + str + "\x1b[" + (insert + ask.length + 1) + "G");
+                        $9kqO2$process.stdout.write("\x1b[2K\x1b[0G" + ask + str + "\x1b[" + (insert + ask.length + 1) + "G");
                         break;
                     case "\x1b[D":
                         if (masked) break;
                         var before = insert;
                         insert = --insert < 0 ? 0 : insert;
-                        if (before - insert) $eyxLw$process.stdout.write("\x1b[1D");
+                        if (before - insert) $9kqO2$process.stdout.write("\x1b[1D");
                         break;
                     case "\x1b[C":
                         if (masked) break;
                         insert = ++insert > str.length ? str.length : insert;
-                        $eyxLw$process.stdout.write("\x1b[" + (insert + ask.length + 1) + "G");
+                        $9kqO2$process.stdout.write("\x1b[" + (insert + ask.length + 1) + "G");
                         break;
                     default:
                         if (buf.toString()) {
@@ -158,7 +158,7 @@ function $d393b47c74009737$var$create(config) {
                             str = str.replace(/\0/g, "");
                             insert = str.length;
                             promptPrint(masked, ask, echo, str, insert);
-                            $eyxLw$process.stdout.write("\x1b[" + (insert + ask.length + 1) + "G");
+                            $9kqO2$process.stdout.write("\x1b[" + (insert + ask.length + 1) + "G");
                             buf = $d393b47c74009737$require$Buffer.alloc(3);
                         }
                 }
@@ -168,22 +168,22 @@ function $d393b47c74009737$var$create(config) {
             character = buf[read - 1];
             // catch a ^C and return null
             if (character == 3) {
-                $eyxLw$process.stdout.write("^C\n");
-                $eyxLw$fs.closeSync(fd);
-                if (sigint) $eyxLw$process.exit(130);
-                $eyxLw$process.stdin.setRawMode && $eyxLw$process.stdin.setRawMode(wasRaw);
+                $9kqO2$process.stdout.write("^C\n");
+                $9kqO2$fs.closeSync(fd);
+                if (sigint) $9kqO2$process.exit(130);
+                $9kqO2$process.stdin.setRawMode && $9kqO2$process.stdin.setRawMode(wasRaw);
                 return null;
             }
             // catch a ^D and exit
             if (character == 4) {
                 if (str.length == 0 && eot) {
-                    $eyxLw$process.stdout.write("exit\n");
-                    $eyxLw$process.exit(0);
+                    $9kqO2$process.stdout.write("exit\n");
+                    $9kqO2$process.exit(0);
                 }
             }
             // catch the terminating character
             if (character == $d393b47c74009737$var$term) {
-                $eyxLw$fs.closeSync(fd);
+                $9kqO2$fs.closeSync(fd);
                 if (!history) break;
                 if (!masked && str.length) history.push(str);
                 history.reset();
@@ -195,21 +195,21 @@ function $d393b47c74009737$var$create(config) {
                 if (str == res[0]) res = autocomplete("");
                 else prevComplete = res.length;
                 if (res.length == 0) {
-                    $eyxLw$process.stdout.write("	");
+                    $9kqO2$process.stdout.write("	");
                     continue;
                 }
                 var item = res[cycle++] || res[cycle = 0, cycle++];
                 if (item) {
-                    $eyxLw$process.stdout.write("\r\x1b[K" + ask + item);
+                    $9kqO2$process.stdout.write("\r\x1b[K" + ask + item);
                     str = item;
                     insert = item.length;
                 }
             }
-            if (character == 127 || $eyxLw$process.platform == "win32" && character == 8) {
+            if (character == 127 || $9kqO2$process.platform == "win32" && character == 8) {
                 if (!insert) continue;
                 str = str.slice(0, insert - 1) + str.slice(insert);
                 insert--;
-                $eyxLw$process.stdout.write("\x1b[2D");
+                $9kqO2$process.stdout.write("\x1b[2D");
             } else {
                 if (character < 32 || character > 126) continue;
                 str = str.slice(0, insert) + String.fromCharCode(character) + str.slice(insert);
@@ -217,20 +217,20 @@ function $d393b47c74009737$var$create(config) {
             }
             promptPrint(masked, ask, echo, str, insert);
         }
-        $eyxLw$process.stdout.write("\n");
-        $eyxLw$process.stdin.setRawMode && $eyxLw$process.stdin.setRawMode(wasRaw);
+        $9kqO2$process.stdout.write("\n");
+        $9kqO2$process.stdin.setRawMode && $9kqO2$process.stdin.setRawMode(wasRaw);
         return str || value || "";
     }
     function promptPrint(masked, ask, echo, str, insert) {
-        if (masked) $eyxLw$process.stdout.write("\x1b[2K\x1b[0G" + ask + Array(str.length + 1).join(echo));
+        if (masked) $9kqO2$process.stdout.write("\x1b[2K\x1b[0G" + ask + Array(str.length + 1).join(echo));
         else {
-            $eyxLw$process.stdout.write("\x1b[s");
-            if (insert == str.length) $eyxLw$process.stdout.write("\x1b[2K\x1b[0G" + ask + str);
-            else if (ask) $eyxLw$process.stdout.write("\x1b[2K\x1b[0G" + ask + str);
-            else $eyxLw$process.stdout.write("\x1b[2K\x1b[0G" + str + "\x1b[" + (str.length - insert) + "D");
+            $9kqO2$process.stdout.write("\x1b[s");
+            if (insert == str.length) $9kqO2$process.stdout.write("\x1b[2K\x1b[0G" + ask + str);
+            else if (ask) $9kqO2$process.stdout.write("\x1b[2K\x1b[0G" + ask + str);
+            else $9kqO2$process.stdout.write("\x1b[2K\x1b[0G" + str + "\x1b[" + (str.length - insert) + "D");
             // Reposition the cursor to the right of the insertion point
             var askLength = $5myiz(ask).length;
-            $eyxLw$process.stdout.write(`\u001b[${askLength + 1 + (echo == "" ? 0 : insert)}G`);
+            $9kqO2$process.stdout.write(`\u001b[${askLength + 1 + (echo == "" ? 0 : insert)}G`);
         }
     }
 }
@@ -263,111 +263,72 @@ module.exports = (options)=>{
 
 
 
-
-"use strict";
-Object.defineProperty(module.exports, "__esModule", {
-    value: true
-});
-var $47cc429db2280c35$exports = {};
-"use strict";
-Object.defineProperty($47cc429db2280c35$exports, "__esModule", {
-    value: true
-});
-$47cc429db2280c35$exports.Exercise10 = $47cc429db2280c35$exports.Exercise09 = $47cc429db2280c35$exports.Exercise08 = $47cc429db2280c35$exports.Exercise07 = $47cc429db2280c35$exports.Exercise06 = $47cc429db2280c35$exports.Exercise05 = $47cc429db2280c35$exports.Exercise04 = $47cc429db2280c35$exports.Exercise03 = $47cc429db2280c35$exports.Exercise02 = $47cc429db2280c35$exports.Exercise01 = void 0;
-var $d6d1a4d626e2997f$exports = {};
-"use strict";
-Object.defineProperty($d6d1a4d626e2997f$exports, "__esModule", {
-    value: true
-});
-var $d6d1a4d626e2997f$var$Exercise01 = function() {
-    var tasks = [
+const $d8f7f67e0e477d55$var$Exercise01 = ()=>{
+    let tasks = [
         "Learn Python",
         "Learn TypeScript",
         "Learn Flutter",
         "Learn ML"
     ];
-    tasks.forEach(function(task, index) {
-        console.log("".concat(index + 1, ". ").concat(task));
+    tasks.forEach((task, index)=>{
+        console.log(`${index + 1}. ${task}`);
     });
-    var evenToDo = function(array) {
+    const evenToDo = (array)=>{
         array.splice(array.length / 2 - 1, 2);
     };
-    var oddToDo = function(array) {
+    const oddToDo = (array)=>{
         array.splice(Math.floor(array.length / 2), 1);
     };
     tasks.length % 2 == 0 ? evenToDo(tasks) : oddToDo(tasks);
     console.log(tasks);
 };
-$d6d1a4d626e2997f$exports.default = $d6d1a4d626e2997f$var$Exercise01;
+var $d8f7f67e0e477d55$export$2e2bcd8739ae039 = $d8f7f67e0e477d55$var$Exercise01;
 
 
-$47cc429db2280c35$exports.Exercise01 = $d6d1a4d626e2997f$exports.default;
-var $6e967552c5f9eab9$exports = {};
-"use strict";
-Object.defineProperty($6e967552c5f9eab9$exports, "__esModule", {
-    value: true
-});
 
-var $6e967552c5f9eab9$var$Exercise02 = function() {
-    var getInput = (parcelRequire("iadAQ"))({
+const $bc7e16aef7d00425$var$Exercise02 = ()=>{
+    let getInput = (parcelRequire("iadAQ"))({
         sigint: true
     });
-    var tableNum = Number(getInput("Enter any number => "));
-    for(var i = 1; i <= 10; i++)console.log("".concat(tableNum, " x ").concat(i, " = ").concat(tableNum * i));
+    let tableNum = Number(getInput("Enter any number => "));
+    for(let i = 1; i <= 10; i++)console.log(`${tableNum} x ${i} = ${tableNum * i}`);
 };
-$6e967552c5f9eab9$exports.default = $6e967552c5f9eab9$var$Exercise02;
+var $bc7e16aef7d00425$export$2e2bcd8739ae039 = $bc7e16aef7d00425$var$Exercise02;
 
 
-$47cc429db2280c35$exports.Exercise02 = $6e967552c5f9eab9$exports.default;
-var $4d44e1bd5364a5a5$exports = {};
-"use strict";
-Object.defineProperty($4d44e1bd5364a5a5$exports, "__esModule", {
-    value: true
-});
-var $fba3d0951e2bbb83$exports = {};
-"use strict";
-Object.defineProperty($fba3d0951e2bbb83$exports, "__esModule", {
-    value: true
-});
-$fba3d0951e2bbb83$exports.Spacer = void 0;
-var $a77e193397c80957$exports = {};
-"use strict";
-Object.defineProperty($a77e193397c80957$exports, "__esModule", {
-    value: true
-});
-var $a77e193397c80957$var$Spacer = function(numOfSpaces) {
+const $9843d36a0715bc80$var$Spacer = (numOfSpaces)=>{
     if (numOfSpaces == undefined) console.log();
-    else for(var i = 1; i <= numOfSpaces; i++)console.log();
+    else for(let i = 1; i <= numOfSpaces; i++)console.log();
 };
-$a77e193397c80957$exports.default = $a77e193397c80957$var$Spacer;
+var $9843d36a0715bc80$export$2e2bcd8739ae039 = $9843d36a0715bc80$var$Spacer;
 
 
-$fba3d0951e2bbb83$exports.Spacer = $a77e193397c80957$exports.default;
 
-
-var $4d44e1bd5364a5a5$var$Exercise03 = function(array, index, value) {
-    console.log('Inserting value "'.concat(value, '" at index ').concat(index, " of array =>"));
-    console.log(array);
-    array.splice(index, 0, value);
-    (0, $fba3d0951e2bbb83$exports.Spacer)();
-    console.log("Modified Array => ", array);
-};
-$4d44e1bd5364a5a5$exports.default = $4d44e1bd5364a5a5$var$Exercise03;
-
-
-$47cc429db2280c35$exports.Exercise03 = $4d44e1bd5364a5a5$exports.default;
-var $2d1f38d194e6b56e$exports = {};
-"use strict";
-Object.defineProperty($2d1f38d194e6b56e$exports, "__esModule", {
-    value: true
-});
-
-var $2d1f38d194e6b56e$var$getInput = (parcelRequire("iadAQ"))({
+const $ab736cffb96f66c4$var$getInput = (parcelRequire("iadAQ"))({
     sigint: true
 });
+var $ab736cffb96f66c4$export$2e2bcd8739ae039 = $ab736cffb96f66c4$var$getInput;
 
-var $2d1f38d194e6b56e$var$Exercise04 = function() {
-    var cartItems = [
+
+
+
+const $4850b84a2f132f23$var$Exercise03 = (array, index, value)=>{
+    console.log(`Inserting value "${value}" at index ${index} of array =>`);
+    console.log(array);
+    array.splice(index, 0, value);
+    (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+    console.log(`Modified Array => `, array);
+};
+var $4850b84a2f132f23$export$2e2bcd8739ae039 = $4850b84a2f132f23$var$Exercise03;
+
+
+
+
+const $dccfa866acc20154$var$getInput = (parcelRequire("iadAQ"))({
+    sigint: true
+});
+const $dccfa866acc20154$var$Exercise04 = ()=>{
+    let cartItems = [
         {
             name: "blue shirts",
             quantity: 2
@@ -381,44 +342,44 @@ var $2d1f38d194e6b56e$var$Exercise04 = function() {
             quantity: 2
         }
     ];
-    var listCartItems = function(cart) {
-        cart.forEach(function(element, index) {
-            var tempArray = element.name.split(" ");
-            var itemName = "";
-            if (tempArray.length > 1) tempArray.forEach(function(name) {
+    const listCartItems = (cart)=>{
+        cart.forEach((element, index)=>{
+            let tempArray = element.name.split(" ");
+            let itemName = "";
+            if (tempArray.length > 1) tempArray.forEach((name)=>{
                 itemName += name[0].toUpperCase() + name.substr(1).toLowerCase() + " ";
             });
             else itemName = element.name[0].toUpperCase() + element.name.substr(1).toLowerCase();
-            console.log("".concat(index + 1, ". ").concat(itemName.trim(), " | Quantity: ").concat(element.quantity));
+            console.log(`${index + 1}. ${itemName.trim()} | Quantity: ${element.quantity}`);
         });
     };
-    (0, $fba3d0951e2bbb83$exports.Spacer)(2);
-    console.log("Cart =>");
+    (0, $9843d36a0715bc80$export$2e2bcd8739ae039)(2);
+    console.log(`Cart =>`);
     listCartItems(cartItems);
-    (0, $fba3d0951e2bbb83$exports.Spacer)();
-    var action = "";
-    var getAction = function() {
-        (0, $fba3d0951e2bbb83$exports.Spacer)(2);
-        console.log("Actions:");
-        console.log("l - List Items in Cart");
-        console.log("a - Add Item to Cart");
-        console.log("r - Remove Item From Cart");
-        console.log("u - Update Name/Item in Cart");
-        console.log("c - Clear All Items In Cart");
-        console.log("e - exit");
-        (0, $fba3d0951e2bbb83$exports.Spacer)();
-        action = $2d1f38d194e6b56e$var$getInput("Enter Action Shortcut => ");
+    (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+    let action = "";
+    const getAction = ()=>{
+        (0, $9843d36a0715bc80$export$2e2bcd8739ae039)(2);
+        console.log(`Actions:`);
+        console.log(`l - List Items in Cart`);
+        console.log(`a - Add Item to Cart`);
+        console.log(`r - Remove Item From Cart`);
+        console.log(`u - Update Name/Item in Cart`);
+        console.log(`c - Clear All Items In Cart`);
+        console.log(`e - exit`);
+        (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+        action = $dccfa866acc20154$var$getInput("Enter Action Shortcut => ");
     };
     getAction();
     // Actions' Function
     // Add
-    var addItem = function(array) {
-        var item = $2d1f38d194e6b56e$var$getInput("Enter Item Name => ");
-        var itemQuantity = $2d1f38d194e6b56e$var$getInput("Enter Item Quantity => ");
-        var exit = "";
-        if (item == null && itemQuantity == null) exit = $2d1f38d194e6b56e$var$getInput("Do you want to exit (Y/N)? ");
+    const addItem = (array)=>{
+        let item = $dccfa866acc20154$var$getInput("Enter Item Name => ");
+        let itemQuantity = $dccfa866acc20154$var$getInput("Enter Item Quantity => ");
+        let exit = "";
+        if (item == null && itemQuantity == null) exit = $dccfa866acc20154$var$getInput("Do you want to exit (Y/N)? ");
         if (!itemQuantity) {
-            console.log("Item Quantity was not specified. So item is added with quantity '1'.");
+            console.log(`Item Quantity was not specified. So item is added with quantity '1'.`);
             itemQuantity = 1;
         }
         if (exit == "Y") ;
@@ -427,346 +388,305 @@ var $2d1f38d194e6b56e$var$Exercise04 = function() {
                 name: item,
                 quantity: itemQuantity
             });
-            (0, $fba3d0951e2bbb83$exports.Spacer)();
-            console.log('Item "'.concat(item, '" with quantity ').concat(itemQuantity, " added."));
-            (0, $fba3d0951e2bbb83$exports.Spacer)();
+            (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+            console.log(`Item "${item}" with quantity ${itemQuantity} added.`);
+            (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
         }
     };
     // Remove
-    var removeItemFromCart = function(array) {
+    const removeItemFromCart = (array)=>{
         listCartItems(array);
-        (0, $fba3d0951e2bbb83$exports.Spacer)();
-        var itemToRemoveIndex = $2d1f38d194e6b56e$var$getInput("Which Item # Do You Want to Remove? (1-".concat(array.length, ") "));
+        (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+        let itemToRemoveIndex = $dccfa866acc20154$var$getInput(`Which Item # Do You Want to Remove? (1-${array.length}) `);
         array.splice(itemToRemoveIndex - 1, 1);
-        (0, $fba3d0951e2bbb83$exports.Spacer)();
+        (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
         console.log("Removed");
     };
     // Update
-    var updateCart = function(array) {
+    const updateCart = (array)=>{
         listCartItems(array);
-        (0, $fba3d0951e2bbb83$exports.Spacer)();
-        var itemToUpdateIndex = $2d1f38d194e6b56e$var$getInput("Which Item # Do You Want to Update? (1-".concat(array.length, ") "));
-        console.log("Leave empty if don't want to change.");
-        var updatedItemName = $2d1f38d194e6b56e$var$getInput("Updated Item Name => ");
-        var updatedItemQuantity = parseInt($2d1f38d194e6b56e$var$getInput("Updated Item Quantity => "));
+        (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+        let itemToUpdateIndex = $dccfa866acc20154$var$getInput(`Which Item # Do You Want to Update? (1-${array.length}) `);
+        console.log(`Leave empty if don't want to change.`);
+        let updatedItemName = $dccfa866acc20154$var$getInput("Updated Item Name => ");
+        let updatedItemQuantity = parseInt($dccfa866acc20154$var$getInput("Updated Item Quantity => "));
         updatedItemQuantity = !updatedItemQuantity ? array[itemToUpdateIndex - 1].quantity : updatedItemQuantity;
         array.splice(itemToUpdateIndex - 1, 1, {
             name: updatedItemName,
             quantity: updatedItemQuantity
         });
-        (0, $fba3d0951e2bbb83$exports.Spacer)();
+        (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
         console.log("Updated");
     };
     // Clear
-    var clearCart = function(array) {
-        array = [];
-        console.log("All items are removed from cart.");
+    const clearCart = ()=>{
+        cartItems = [];
+        console.log(`All items are removed from cart.`);
     };
-    var shouldExit = action == "e" ? false : true;
+    let shouldExit = action == "e" ? false : true;
     while(shouldExit){
         switch(action){
             case "a":
                 // add new item
                 addItem(cartItems);
-                (0, $fba3d0951e2bbb83$exports.Spacer)();
+                (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
                 getAction();
                 break;
             case "l":
                 // List all Items in Cart
                 listCartItems(cartItems);
-                (0, $fba3d0951e2bbb83$exports.Spacer)();
+                (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
                 getAction();
                 break;
             case "r":
                 // remove existing items from the cart
                 removeItemFromCart(cartItems);
-                (0, $fba3d0951e2bbb83$exports.Spacer)();
+                (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
                 getAction();
                 break;
             case "u":
                 // update quantities of an item already present on the cart
                 updateCart(cartItems);
-                (0, $fba3d0951e2bbb83$exports.Spacer)();
+                (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
                 getAction();
                 break;
             case "c":
                 // clear all items from the cart
-                clearCart(cartItems);
-                (0, $fba3d0951e2bbb83$exports.Spacer)();
+                clearCart();
+                (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
                 getAction();
                 break;
             default:
-                action = $2d1f38d194e6b56e$var$getInput("Invalid Shortcut, Please Try Again => ");
+                action = $dccfa866acc20154$var$getInput("Invalid Shortcut, Please Try Again => ");
                 break;
         }
         shouldExit = action == "e" ? false : true;
     }
-    console.log("Exited");
+    console.log(`Exited`);
 };
-$2d1f38d194e6b56e$exports.default = $2d1f38d194e6b56e$var$Exercise04;
+var $dccfa866acc20154$export$2e2bcd8739ae039 = $dccfa866acc20154$var$Exercise04;
 
 
-$47cc429db2280c35$exports.Exercise04 = $2d1f38d194e6b56e$exports.default;
-var $58202ce722846fd4$exports = {};
-"use strict";
-Object.defineProperty($58202ce722846fd4$exports, "__esModule", {
-    value: true
-});
 // Print the first 25 integers using while loop.
-var $58202ce722846fd4$var$Exercise05 = function() {
-    var i = 1;
+const $30eb706e46580473$var$Exercise05 = ()=>{
+    let i = 1;
     while(i <= 25){
         console.log(i);
         i++;
     }
 };
-$58202ce722846fd4$exports.default = $58202ce722846fd4$var$Exercise05;
+var $30eb706e46580473$export$2e2bcd8739ae039 = $30eb706e46580473$var$Exercise05;
 
 
-$47cc429db2280c35$exports.Exercise05 = $58202ce722846fd4$exports.default;
-var $e7eda70688b5ac7c$exports = {};
-"use strict";
-Object.defineProperty($e7eda70688b5ac7c$exports, "__esModule", {
-    value: true
-});
 // Print first 10 even numbers using while loop
-var $e7eda70688b5ac7c$var$Exercise06 = function() {
-    var i = 1;
+const $fc6fd38d520803fe$var$Exercise06 = ()=>{
+    let i = 1;
     while(i <= 10){
         console.log(2 * i);
         i++;
     }
 };
-$e7eda70688b5ac7c$exports.default = $e7eda70688b5ac7c$var$Exercise06;
+var $fc6fd38d520803fe$export$2e2bcd8739ae039 = $fc6fd38d520803fe$var$Exercise06;
 
 
-$47cc429db2280c35$exports.Exercise06 = $e7eda70688b5ac7c$exports.default;
-var $4f244fe71d46539d$exports = {};
-"use strict";
-Object.defineProperty($4f244fe71d46539d$exports, "__esModule", {
-    value: true
-});
 
 
 // Create a function to input a positive number and calculates its factorial.
-var $4f244fe71d46539d$var$Exercise07 = function() {
-    var getInput = (parcelRequire("iadAQ"))({
+const $a7bfd731574e6e6e$var$Exercise07 = ()=>{
+    let getInput = (parcelRequire("iadAQ"))({
         sigint: true
     });
-    var number = getInput("Enter number for calculating factorial => ");
-    var factorial = 1;
+    let number = getInput("Enter number for calculating factorial => ");
+    let factorial = 1;
     while(number < 1){
-        (0, $fba3d0951e2bbb83$exports.Spacer)();
-        console.log("The number is negative.");
+        (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+        console.log(`The number is negative.`);
         number = getInput("Please Enter a Positive Number => ");
     }
     number = Number(number);
-    console.log("Given Number: ".concat(number));
+    console.log(`Given Number: ${number}`);
     while(number >= 1){
         factorial *= number;
         number--;
     }
-    console.log("Factorial: ".concat(factorial));
+    console.log(`Factorial: ${factorial}`);
 };
-$4f244fe71d46539d$exports.default = $4f244fe71d46539d$var$Exercise07;
+var $a7bfd731574e6e6e$export$2e2bcd8739ae039 = $a7bfd731574e6e6e$var$Exercise07;
 
 
-$47cc429db2280c35$exports.Exercise07 = $4f244fe71d46539d$exports.default;
-var $8c9c9e82cd651375$exports = {};
-"use strict";
-Object.defineProperty($8c9c9e82cd651375$exports, "__esModule", {
-    value: true
-});
 
-var $8c9c9e82cd651375$var$Exercise08 = function() {
-    var getInput = (parcelRequire("iadAQ"))({
+const $37bd4aa8b3b4f712$var$Exercise08 = ()=>{
+    let getInput = (parcelRequire("iadAQ"))({
         sigint: true
     });
     // For taking input from user.
-    console.log("Please Enter Numbers separated by a single space.");
-    var numList = getInput("=> ");
-    var numArray = numList.split(" "); // Array to store the number entered by User.
-    for(var i_1 = 0; i_1 < numArray.length; i_1++)if (isNaN(numArray[i_1])) console.log("".concat(numArray[i_1], " is not a number"));
-    else numArray[i_1] = Number(numArray[i_1]);
-    console.log("Initial Array =>", numArray);
-    var i = 0;
+    console.log(`Please Enter Numbers separated by a single space.`);
+    let numList = getInput("=> ");
+    let numArray = numList.split(" "); // Array to store the number entered by User.
+    for(let i = 0; i < numArray.length; i++)if (isNaN(numArray[i])) console.log(`${numArray[i]} is not a number`);
+    else numArray[i] = Number(numArray[i]);
+    console.log(`Initial Array =>`, numArray);
+    let i = 0;
     while(i < numArray.length)if (numArray[i] < 0) {
         numArray.splice(i, 1);
         i--;
     } else i++;
-    console.log("Array after Removing Negatives =>", numArray);
+    console.log(`Array after Removing Negatives =>`, numArray);
 };
-$8c9c9e82cd651375$exports.default = $8c9c9e82cd651375$var$Exercise08;
+var $37bd4aa8b3b4f712$export$2e2bcd8739ae039 = $37bd4aa8b3b4f712$var$Exercise08;
 
-
-$47cc429db2280c35$exports.Exercise08 = $8c9c9e82cd651375$exports.default;
-var $55c042a585464618$exports = {};
-"use strict";
-Object.defineProperty($55c042a585464618$exports, "__esModule", {
-    value: true
-});
 
 // Calculate sum of numbers in array
-var $55c042a585464618$var$Exercise09 = function() {
-    var getInput = (parcelRequire("iadAQ"))({
+
+const $7a627cda7e40c881$var$Exercise09 = ()=>{
+    let getInput = (parcelRequire("iadAQ"))({
         sigint: true
     });
     // For taking input from user.
-    console.log("Please Enter Numbers separated by a single space.");
-    var numList = getInput("=> ");
-    var numArray = numList.split(" "); // Array to store the number entered by User.
-    for(var i = 0; i < numArray.length; i++)if (isNaN(numArray[i])) console.log("".concat(numArray[i], " is not a number"));
+    console.log(`Please Enter Numbers separated by a single space.`);
+    let numList = getInput("=> ");
+    let numArray = numList.split(" "); // Array to store the number entered by User.
+    for(let i = 0; i < numArray.length; i++)if (isNaN(numArray[i])) console.log(`${numArray[i]} is not a number`);
     else numArray[i] = Number(numArray[i]);
-    console.log("Array of Numbers:-");
+    console.log(`Array of Numbers:-`);
     console.log(numArray);
-    var sum = 0;
-    var index = 0;
+    let sum = 0;
+    let index = 0;
     while(index < numArray.length){
-        if (isNaN(numArray[index])) console.log("".concat(numArray[index], " is not a number"));
+        if (isNaN(numArray[index])) console.log(`${numArray[index]} is not a number`);
         else sum += numArray[index];
         index++;
     }
-    console.log("Sum: ".concat(sum));
+    console.log(`Sum: ${sum}`);
 };
-$55c042a585464618$exports.default = $55c042a585464618$var$Exercise09;
+var $7a627cda7e40c881$export$2e2bcd8739ae039 = $7a627cda7e40c881$var$Exercise09;
 
 
-$47cc429db2280c35$exports.Exercise09 = $55c042a585464618$exports.default;
-var $bf10c63d936cd915$exports = {};
-"use strict";
-Object.defineProperty($bf10c63d936cd915$exports, "__esModule", {
-    value: true
-});
 
-var $bf10c63d936cd915$var$Exercise10 = function() {
-    var getInput = (parcelRequire("iadAQ"))({
+const $856e462e9bd8efdd$var$Exercise10 = ()=>{
+    let getInput = (parcelRequire("iadAQ"))({
         sigint: true
     });
     // For taking input from user.
-    console.log("Please Enter Numbers separated by a single space.");
-    var numList = getInput("=> ");
-    var celsius = numList.split(" "); // Array to store the number entered by User.
-    var fahrenheit = [];
-    for(var i = 0; i < celsius.length; i++)if (isNaN(Number(celsius[i]))) console.log("".concat(celsius[i], " is not a temperature"));
-    else celsius[i] = Number(celsius[i]);
-    for(var i = 0; i < celsius.length; i++)fahrenheit.push((1.8 * celsius[i] + 32).toFixed(2));
-    for(var i = 0; i < fahrenheit.length; i++)fahrenheit[i] = Number(fahrenheit[i]);
-    console.log("Temperatures in \xb0C => ", celsius);
-    console.log("Temperatures in \xb0F => ", fahrenheit);
+    console.log(`Please Enter Numbers separated by a single space.`);
+    let numList = getInput("=> ");
+    let celsius = numList.split(" "); // Array to store the number entered by User.
+    let fahrenheit = [];
+    var i = 0;
+    while(i < celsius.length)if (isNaN(Number(celsius[i]))) console.log(`${celsius[i]} is not a temperature`);
+    else {
+        celsius[i] = Number(celsius[i]);
+        i++;
+    }
+    var i = 0;
+    while(i < celsius.length){
+        fahrenheit.push((1.8 * celsius[i] + 32).toFixed(2));
+        i++;
+    }
+    var i = 0;
+    while(i < fahrenheit.length){
+        fahrenheit[i] = Number(fahrenheit[i]);
+        i++;
+    }
+    console.log(`Temperatures in °C => `, celsius);
+    console.log(`Temperatures in °F => `, fahrenheit);
 };
-$bf10c63d936cd915$exports.default = $bf10c63d936cd915$var$Exercise10;
-
-
-$47cc429db2280c35$exports.Exercise10 = $bf10c63d936cd915$exports.default;
+var $856e462e9bd8efdd$export$2e2bcd8739ae039 = $856e462e9bd8efdd$var$Exercise10;
 
 
 
 
-var $9c47469fb9776743$var$getInput = (parcelRequire("iadAQ"))({
+
+
+
+const $14101d2d51cac0cb$var$getInput = (parcelRequire("iadAQ"))({
     sigint: true
 });
-var $9c47469fb9776743$var$exercises = [
+let $14101d2d51cac0cb$var$exercises = [
     {
         name: "To-Do List | Array Splice Method",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise01)();
-        }
+        exerciseFn: ()=>(0, $d8f7f67e0e477d55$export$2e2bcd8739ae039)()
     },
     {
         name: "Print Arithmetic Table using While Loop",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise02)();
-        }
+        exerciseFn: ()=>(0, $bc7e16aef7d00425$export$2e2bcd8739ae039)()
     },
     {
         name: "Add a value at specified index in the given array.",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise03)([
+        exerciseFn: ()=>(0, $4850b84a2f132f23$export$2e2bcd8739ae039)([
                 "Hello",
                 "Everyone",
                 "Name",
                 "is",
                 "Hamza"
-            ], 2, "My");
-        }
+            ], 2, "My")
     },
     {
         name: "Functioning Shopping Cart",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise04)();
-        }
+        exerciseFn: ()=>(0, $dccfa866acc20154$export$2e2bcd8739ae039)()
     },
     {
         name: "Print first 25 Integers using 'while loop'.",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise05)();
-        }
+        exerciseFn: ()=>(0, $30eb706e46580473$export$2e2bcd8739ae039)()
     },
     {
         name: "Print first 10 even numbers using 'while loop'.",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise06)();
-        }
+        exerciseFn: ()=>(0, $fc6fd38d520803fe$export$2e2bcd8739ae039)()
     },
     {
         name: "Calculate Factorial",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise07)();
-        }
+        exerciseFn: ()=>(0, $a7bfd731574e6e6e$export$2e2bcd8739ae039)()
     },
     {
         name: "Remove Number from Array if Negative",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise08)();
-        }
+        exerciseFn: ()=>(0, $37bd4aa8b3b4f712$export$2e2bcd8739ae039)()
     },
     {
         name: "Find Sum of Numbers Stored in Array",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise09)();
-        }
+        exerciseFn: ()=>(0, $7a627cda7e40c881$export$2e2bcd8739ae039)()
     },
     {
         name: "Convert List of \xb0C Temperatures to \xb0F",
-        exerciseFn: function() {
-            return (0, $47cc429db2280c35$exports.Exercise10)();
-        }
+        exerciseFn: ()=>(0, $856e462e9bd8efdd$export$2e2bcd8739ae039)()
     }
 ];
-console.log("/************************/");
-console.log("Choose Exercise #");
-console.log("/************************/");
-$9c47469fb9776743$var$exercises.forEach(function(element, index) {
-    (0, $fba3d0951e2bbb83$exports.Spacer)();
-    console.log("".concat(index + 1, " - ").concat(element["name"]));
+console.log(`/************************/`);
+console.log(`Choose Exercise #`);
+console.log(`/************************/`);
+$14101d2d51cac0cb$var$exercises.forEach((element, index)=>{
+    (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+    console.log(`${index + 1} - ${element["name"]}`);
 });
-(0, $fba3d0951e2bbb83$exports.Spacer)();
-console.log("e - Exit");
-(0, $fba3d0951e2bbb83$exports.Spacer)();
-var $9c47469fb9776743$var$exercise_no = $9c47469fb9776743$var$getInput("Enter Exercise # to Run: ");
-var $9c47469fb9776743$var$runExerciseNo = $9c47469fb9776743$var$exercise_no == "e" || $9c47469fb9776743$var$exercise_no >= 1 && $9c47469fb9776743$var$exercise_no <= $9c47469fb9776743$var$exercises.length;
-while($9c47469fb9776743$var$runExerciseNo == false)$9c47469fb9776743$var$exercise_no = $9c47469fb9776743$var$getInput("Please Enter Exercise # to Run: ");
-var $9c47469fb9776743$var$exitProgram = $9c47469fb9776743$var$exercise_no == "e";
-while(!$9c47469fb9776743$var$exitProgram){
-    console.log("==================");
-    console.log("Exercise ".concat($9c47469fb9776743$var$exercise_no, ": ").concat($9c47469fb9776743$var$exercises[$9c47469fb9776743$var$exercise_no - 1].name));
-    console.log("==================");
-    (0, $fba3d0951e2bbb83$exports.Spacer)();
-    $9c47469fb9776743$var$exercises[$9c47469fb9776743$var$exercise_no - 1].exerciseFn();
-    (0, $fba3d0951e2bbb83$exports.Spacer)(2);
-    $9c47469fb9776743$var$getInput("Press Enter to Continue...");
-    (0, $fba3d0951e2bbb83$exports.Spacer)();
-    console.log("/************************/");
-    console.log("Choose Exercise #");
-    console.log("/************************/");
-    $9c47469fb9776743$var$exercises.forEach(function(element, index) {
-        (0, $fba3d0951e2bbb83$exports.Spacer)();
-        console.log("".concat(index + 1, " - ").concat(element["name"]));
+(0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+console.log(`e - Exit`);
+(0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+let $14101d2d51cac0cb$var$exercise_no = $14101d2d51cac0cb$var$getInput("Enter Exercise # to Run: ");
+let $14101d2d51cac0cb$var$runExerciseNo = $14101d2d51cac0cb$var$exercise_no == "e" || $14101d2d51cac0cb$var$exercise_no >= 1 && $14101d2d51cac0cb$var$exercise_no <= $14101d2d51cac0cb$var$exercises.length;
+while($14101d2d51cac0cb$var$runExerciseNo == false)$14101d2d51cac0cb$var$exercise_no = $14101d2d51cac0cb$var$getInput("Please Enter Exercise # to Run: ");
+let $14101d2d51cac0cb$var$exitProgram = $14101d2d51cac0cb$var$exercise_no == `e`;
+while(!$14101d2d51cac0cb$var$exitProgram){
+    console.log(`==================`);
+    console.log(`Exercise ${$14101d2d51cac0cb$var$exercise_no}: ${$14101d2d51cac0cb$var$exercises[$14101d2d51cac0cb$var$exercise_no - 1].name}`);
+    console.log(`==================`);
+    (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+    $14101d2d51cac0cb$var$exercises[$14101d2d51cac0cb$var$exercise_no - 1].exerciseFn();
+    (0, $9843d36a0715bc80$export$2e2bcd8739ae039)(2);
+    $14101d2d51cac0cb$var$getInput("Press Enter to Continue...");
+    (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+    console.log(`/************************/`);
+    console.log(`Choose Exercise #`);
+    console.log(`/************************/`);
+    $14101d2d51cac0cb$var$exercises.forEach((element, index)=>{
+        (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+        console.log(`${index + 1} - ${element["name"]}`);
     });
-    (0, $fba3d0951e2bbb83$exports.Spacer)();
-    console.log("e - Exit");
-    $9c47469fb9776743$var$exercise_no = $9c47469fb9776743$var$getInput("Enter Exercise # to Run: ");
-    $9c47469fb9776743$var$exitProgram = $9c47469fb9776743$var$exercise_no == "e";
+    (0, $9843d36a0715bc80$export$2e2bcd8739ae039)();
+    console.log(`e - Exit`);
+    $14101d2d51cac0cb$var$exercise_no = $14101d2d51cac0cb$var$getInput("Enter Exercise # to Run: ");
+    $14101d2d51cac0cb$var$exitProgram = $14101d2d51cac0cb$var$exercise_no == "e";
 }
-console.log("Exit");
-$eyxLw$process.exit(0);
+console.log(`Exit`);
+$9kqO2$process.exit(0);
+
+
+//# sourceMappingURL=index.js.map
