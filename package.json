@@ -1,8 +1,12 @@
 {
   "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "inquirer": "^9.2.10",
+    "picocolors": "^1.0.0",
     "prompt-sync": "^4.2.0"
   },
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
     "@types/node": "^20.5.0"
   }
 }
