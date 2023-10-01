@@ -1,5 +1,3 @@
-<link rel='stylesheet' href='../readme-style.css'>
-
 # PIAIC Quarter 1: TypeScript
 
 ## Week 11 - Interfaces | Types | Generics
